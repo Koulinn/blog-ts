@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import React from "react";
+
 import Links from "../../shareable_components/Links";
 
 const linksList = [
@@ -20,10 +20,11 @@ const linksList = [
 const AccessCSS = () => {
   return {
     display: "flex",
+    height: "96px",
     justifyContent: "center",
     alignItems: "center",
     margin: "auto",
-    gap: "32px",
+    gap: "64px",
   };
 };
 

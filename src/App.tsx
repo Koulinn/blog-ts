@@ -3,8 +3,8 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { BrowserRouter } from "react-router-dom";
 import TopBar from "./components/TopBar/TopBar";
 import "./index.css";
-import ASSETS_LINKS from "./assets/links";
 import BG_Video from "./components/BG_Video/BG_Video";
+import Pages from "./pages/Pages";
 
 function App() {
   return (
@@ -13,6 +13,7 @@ function App() {
       <Grid container>
         <BrowserRouter>
           <TopBar />
+          <Pages />
         </BrowserRouter>
       </Grid>
     </CssBaseline>

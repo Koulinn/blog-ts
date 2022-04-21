@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 interface LinksProps {
   path: string;
@@ -8,8 +8,13 @@ interface LinksProps {
 }
 
 function Links({ path, text }: LinksProps) {
+  const location = useLocation();
+
   return (
-    <Link to={path}>
+    <Link
+      to={path}
+      className={location.pathname.includes(path) ? "active" : undefined}
+    >
       <Typography component={"h6"} variant={"h5"}>
         {text}
       </Typography>

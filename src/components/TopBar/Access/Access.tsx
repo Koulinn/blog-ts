@@ -8,12 +8,8 @@ const linksList = [
     text: "Blog",
   },
   {
-    path: "/login",
-    text: "Login",
-  },
-  {
     path: "/register",
-    text: "Register",
+    text: "Back-office",
   },
 ];
 
@@ -25,6 +21,10 @@ const AccessCSS = () => {
     alignItems: "center",
     margin: "auto",
     gap: "64px",
+    minWidth: "360px",
+    backgroundColor: "#ffffff85",
+    borderRadius: "0px 0px 16px 16px",
+    boxShadow: "1px 16px 28px 10px rgba(0,0,0,0.66)",
   };
 };
 

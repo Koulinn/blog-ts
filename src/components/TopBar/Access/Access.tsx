@@ -8,7 +8,7 @@ const linksList = [
     text: "Blog",
   },
   {
-    path: "/register",
+    path: "/backOffice",
     text: "Back-office",
   },
 ];

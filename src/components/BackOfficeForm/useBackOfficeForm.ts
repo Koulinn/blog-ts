@@ -8,7 +8,7 @@ interface formValuesTypes {
   title: string;
 }
 
-type stringsProperties = "img_url" | "text" | "title";
+export type stringsProperties = "img_url" | "text" | "title";
 
 function useBackOfficeForm() {
   const [formValues, setFormValues] = useState<formValuesTypes>({
@@ -48,47 +48,7 @@ function useBackOfficeForm() {
     });
   }, []);
 
-  const inputsFields = useMemo(
-    () => [
-      {
-        key: "name",
-        name: "title",
-        helperText: "Enter title",
-        label: "Title",
-        functionOnChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-          handleStrings(e, "title"),
-        isRequired: false,
-        inputType: "text",
-        validation: {
-          values: [],
-          type: "string",
-          minChar: 5,
-          maxChar: 144,
-        },
-        currentValue: formValues["title"],
-      },
-      {
-        key: "text",
-        name: "text",
-        helperText: "Write your thoughts",
-        label: "Post",
-        functionOnChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-          handleStrings(e, "text"),
-        isRequired: false,
-        inputType: "textarea",
-        validation: {
-          values: [],
-          type: "string",
-          minChar: 50,
-          maxChar: 1400,
-        },
-        currentValue: formValues["text"],
-      },
-    ],
-    [formValues]
-  );
-
-  return { inputsFields, formValues };
+  return { formValues, handleImage, handleStrings, handleTags };
 }
 
 export default useBackOfficeForm;

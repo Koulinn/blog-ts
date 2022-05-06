@@ -1,29 +1,13 @@
 import React, { useCallback, useState } from "react";
 import TextField from "@mui/material/TextField";
 import { Box } from "@mui/system";
-import { ValidationType } from "../../utils/Types/ValidationType";
 import isValidInput from "../../utils/validateForm";
-import { stringsProperties } from "../BackOfficeForm/useBackOfficeForm";
-
-interface InputsProps {
-  name: stringsProperties;
-  helperText: string;
-  label: string;
-  inputType: string;
-  isRequired: boolean;
-  functionOnChange: (
-    e: React.ChangeEvent<HTMLInputElement>,
-    property: stringsProperties
-  ) => void;
-  minRows?: number;
-  validation: ValidationType;
-  currentValue: string | boolean | number | FormData | null;
-}
-
-interface isErrorType {
-  isError: boolean;
-  msg: string;
-}
+import {
+  stringsProperties,
+  InputsProps,
+  isErrorType,
+  ValidationType,
+} from "../../Interfaces";
 
 function Inputs({
   name,

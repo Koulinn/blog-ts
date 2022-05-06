@@ -1,5 +1,5 @@
 import React from "react";
-import { ValidationType } from "./Types/ValidationType";
+import { ValidationType } from "../Interfaces";
 
 const checkSelectors = (values: string[], value: string) => {
   return {

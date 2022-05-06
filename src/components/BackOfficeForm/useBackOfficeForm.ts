@@ -1,14 +1,6 @@
 import React, { useState, useCallback, useMemo } from "react";
-
-interface formValuesTypes {
-  formData: FormData | null;
-  img_url: string;
-  text: string;
-  tags: string[];
-  title: string;
-}
-
-export type stringsProperties = "img_url" | "text" | "title";
+import { formValuesTypes, handleTagsInterface } from "../../Interfaces";
+import { stringsProperties } from "../../Interfaces";
 
 function useBackOfficeForm() {
   const [formValues, setFormValues] = useState<formValuesTypes>({
@@ -38,17 +30,26 @@ function useBackOfficeForm() {
     []
   );
 
-  const handleTags = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleTags = useCallback((value: string) => {
     setFormValues((prevValues) => {
-      if (!prevValues.tags.includes(e.target.value)) {
-        return { ...prevValues, tags: [...prevValues.tags, e.target.value] };
+      if (!prevValues.tags.includes(value)) {
+        return { ...prevValues, tags: [...prevValues.tags, value] };
       } else {
         return prevValues;
       }
     });
   }, []);
 
-  return { formValues, handleImage, handleStrings, handleTags };
+  const removeTag = useCallback((value: string) => {
+    setFormValues((prevValues) => {
+      return {
+        ...prevValues,
+        tags: prevValues.tags.filter((tag) => value !== tag),
+      };
+    });
+  }, []);
+
+  return { formValues, handleImage, handleStrings, handleTags, removeTag };
 }
 
 export default useBackOfficeForm;

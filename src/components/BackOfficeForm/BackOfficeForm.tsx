@@ -1,10 +1,15 @@
 import { Box, Stack } from "@mui/material";
-import React from "react";
+
 import Inputs from "../shareable_components/Inputs";
 import useBackOfficeForm from "./useBackOfficeForm";
 
+import validation from "./fieldsValidation";
+import InputTags from "../shareable_components/InputTags";
+
+const { titleValidation, postValidation } = validation;
+
 function BackOfficeForm() {
-  const { formValues, handleImage, handleStrings, handleTags } =
+  const { formValues, handleImage, handleStrings, handleTags, removeTag } =
     useBackOfficeForm();
 
   return (
@@ -16,15 +21,26 @@ function BackOfficeForm() {
           helperText={"Enter title"}
           label={"Title"}
           functionOnChange={handleStrings}
-          isRequired={false}
+          isRequired={true}
           inputType={"text"}
-          validation={{
-            values: [],
-            type: "string",
-            minChar: 5,
-            maxChar: 144,
-          }}
+          validation={titleValidation}
           currentValue={formValues.title}
+        />
+        <Inputs
+          key={"text"}
+          name={"text"}
+          helperText={"Write your thoughts"}
+          label={"Post"}
+          functionOnChange={handleStrings}
+          isRequired={true}
+          inputType={"textarea"}
+          validation={postValidation}
+          currentValue={formValues.title}
+        />
+        <InputTags
+          handleTags={handleTags}
+          tags={formValues.tags}
+          removeTag={removeTag}
         />
       </Stack>
     </Box>

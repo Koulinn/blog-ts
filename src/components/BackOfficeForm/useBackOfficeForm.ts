@@ -49,7 +49,24 @@ function useBackOfficeForm() {
     });
   }, []);
 
-  return { formValues, handleImage, handleStrings, handleTags, removeTag };
+  const handleSubmit = useCallback(
+    (e: React.ChangeEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      try {
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    [formValues]
+  );
+  return {
+    formValues,
+    handleImage,
+    handleStrings,
+    handleTags,
+    removeTag,
+    handleSubmit,
+  };
 }
 
 export default useBackOfficeForm;

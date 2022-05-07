@@ -1,19 +1,26 @@
-import { Box, Stack } from "@mui/material";
+import { Box, Button, Stack, TextField } from "@mui/material";
 
 import Inputs from "../shareable_components/Inputs";
 import useBackOfficeForm from "./useBackOfficeForm";
 
 import validation from "./fieldsValidation";
 import InputTags from "../shareable_components/InputTags";
+import UploadCover from "./UploadCover";
 
 const { titleValidation, postValidation } = validation;
 
 function BackOfficeForm() {
-  const { formValues, handleImage, handleStrings, handleTags, removeTag } =
-    useBackOfficeForm();
+  const {
+    formValues,
+    handleImage,
+    handleStrings,
+    handleTags,
+    removeTag,
+    handleSubmit,
+  } = useBackOfficeForm();
 
   return (
-    <Box component="form">
+    <Box component="form" onSubmit={handleSubmit}>
       <Stack spacing={3}>
         <Inputs
           key={"title"}
@@ -26,6 +33,11 @@ function BackOfficeForm() {
           validation={titleValidation}
           currentValue={formValues.title}
         />
+        <InputTags
+          handleTags={handleTags}
+          tags={formValues.tags}
+          removeTag={removeTag}
+        />
         <Inputs
           key={"text"}
           name={"text"}
@@ -37,12 +49,11 @@ function BackOfficeForm() {
           validation={postValidation}
           currentValue={formValues.title}
         />
-        <InputTags
-          handleTags={handleTags}
-          tags={formValues.tags}
-          removeTag={removeTag}
-        />
+        <UploadCover handleImage={handleImage} />
       </Stack>
+      <Button variant="contained" type="submit">
+        Create post
+      </Button>
     </Box>
   );
 }

@@ -42,7 +42,7 @@ export default function Post({
   tags,
 }: PostProps) {
   return (
-    <Card sx={{ maxWidth: 640, margin: "auto" }}>
+    <Card sx={{ maxWidth: 640, margin: "16px auto" }}>
       <CardHeader
         avatar={
           <Avatar src={avatar} sx={{ bgcolor: red[500] }} aria-label="recipe" />

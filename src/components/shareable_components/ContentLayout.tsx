@@ -15,8 +15,8 @@ function ContentLayout({ children }: AuxProps) {
         backgroundColor: "#dfdfdf4d",
         padding: "64px",
         borderRadius: "24px",
-        overflow: "hidden",
-        maxHeight: "100vh",
+        maxHeight: "calc(94vh - 103px)",
+        overflowY: "scroll",
       }}
     >
       <Grid>{children}</Grid>

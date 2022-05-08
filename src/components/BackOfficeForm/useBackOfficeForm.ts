@@ -9,14 +9,17 @@ function useBackOfficeForm() {
     text: "",
     tags: [],
     title: "",
+    img_preview: "",
   });
 
   const handleImage = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       const formData = new FormData();
       formData.append("postImg", e.target.files[0]);
+      const previewUrl = URL.createObjectURL(e.target.files[0]);
+
       setFormValues((prevValues) => {
-        return { ...prevValues, formData: formData };
+        return { ...prevValues, formData: formData, img_preview: previewUrl };
       });
     }
   }, []);
@@ -52,6 +55,7 @@ function useBackOfficeForm() {
   const handleSubmit = useCallback(
     (e: React.ChangeEvent<HTMLFormElement>) => {
       e.preventDefault();
+
       try {
       } catch (error) {
         console.log(error);
@@ -59,6 +63,7 @@ function useBackOfficeForm() {
     },
     [formValues]
   );
+
   return {
     formValues,
     handleImage,

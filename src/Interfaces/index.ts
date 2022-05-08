@@ -4,6 +4,7 @@ export interface formValuesTypes {
   text: string;
   tags: string[];
   title: string;
+  img_preview: string;
 }
 
 export type stringsProperties = "img_url" | "text" | "title" | "tags";
@@ -48,4 +49,9 @@ export interface handleTagsInterface {
 export interface TagsDisplayProps {
   tags: string[];
   removeTag: (e: string) => void;
+}
+
+export interface uploadCoverPropsT {
+  handleImage: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  imgPreview: string;
 }

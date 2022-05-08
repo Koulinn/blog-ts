@@ -9,6 +9,7 @@ const topBarCSS = () => {
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
+    marginBottom: "64px",
   };
 };
 

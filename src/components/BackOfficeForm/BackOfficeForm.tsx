@@ -1,4 +1,4 @@
-import { Box, Button, Stack, TextField } from "@mui/material";
+import { Box, Button, Container, Stack, TextField } from "@mui/material";
 
 import Inputs from "../shareable_components/Inputs";
 import useBackOfficeForm from "./useBackOfficeForm";
@@ -49,11 +49,18 @@ function BackOfficeForm() {
           validation={postValidation}
           currentValue={formValues.title}
         />
-        <UploadCover handleImage={handleImage} />
+        <UploadCover
+          handleImage={handleImage}
+          imgPreview={formValues.img_preview || formValues.img_url}
+        />
       </Stack>
-      <Button variant="contained" type="submit">
-        Create post
-      </Button>
+      <Container
+        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+      >
+        <Button variant="contained" type="submit" sx={{ minWidth: "50%" }}>
+          Create post
+        </Button>
+      </Container>
     </Box>
   );
 }
